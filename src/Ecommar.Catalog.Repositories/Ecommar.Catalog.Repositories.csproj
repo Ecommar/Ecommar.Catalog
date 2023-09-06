@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ecommar.Catalog.Models\Ecommar.Catalog.Models.csproj" />
+  </ItemGroup>
+
 </Project>

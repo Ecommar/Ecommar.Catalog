@@ -27,6 +27,153 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Repositories\\Ecommar.Catalog.Repositories.csproj": {
+                "projectPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Repositories\\Ecommar.Catalog.Repositories.csproj"
+              },
+              "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Services\\Ecommar.Catalog.Services.csproj": {
+                "projectPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Services\\Ecommar.Catalog.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.1.1, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Mediator\\Ecommar.Catalog.Mediator.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Mediator\\Ecommar.Catalog.Mediator.csproj",
+        "projectName": "Ecommar.Catalog.Mediator",
+        "projectPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Mediator\\Ecommar.Catalog.Mediator.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Mediator\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Models\\Ecommar.Catalog.Models.csproj": {
+                "projectPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Models\\Ecommar.Catalog.Models.csproj"
+              },
+              "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Repositories\\Ecommar.Catalog.Repositories.csproj": {
+                "projectPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Repositories\\Ecommar.Catalog.Repositories.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Models\\Ecommar.Catalog.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Models\\Ecommar.Catalog.Models.csproj",
+        "projectName": "Ecommar.Catalog.Models",
+        "projectPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Models\\Ecommar.Catalog.Models.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -40,9 +187,136 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Swashbuckle.AspNetCore": {
+            "MediatR": {
               "target": "Package",
-              "version": "[6.5.0, )"
+              "version": "[12.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Repositories\\Ecommar.Catalog.Repositories.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Repositories\\Ecommar.Catalog.Repositories.csproj",
+        "projectName": "Ecommar.Catalog.Repositories",
+        "projectPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Repositories\\Ecommar.Catalog.Repositories.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Repositories\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Models\\Ecommar.Catalog.Models.csproj": {
+                "projectPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Models\\Ecommar.Catalog.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Services\\Ecommar.Catalog.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Services\\Ecommar.Catalog.Services.csproj",
+        "projectName": "Ecommar.Catalog.Services",
+        "projectPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Services\\Ecommar.Catalog.Services.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Mediator\\Ecommar.Catalog.Mediator.csproj": {
+                "projectPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Mediator\\Ecommar.Catalog.Mediator.csproj"
+              },
+              "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Models\\Ecommar.Catalog.Models.csproj": {
+                "projectPath": "C:\\Users\\PC\\source\\repos\\Ecommar.Catalog\\src\\Ecommar.Catalog.Models\\Ecommar.Catalog.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
