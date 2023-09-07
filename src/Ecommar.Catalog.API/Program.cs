@@ -1,5 +1,4 @@
 using Ecommar.Catalog.API.Configuration.Extensions;
-using System;
 
 try
 {

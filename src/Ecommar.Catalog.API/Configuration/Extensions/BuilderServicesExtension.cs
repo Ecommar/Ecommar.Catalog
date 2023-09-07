@@ -2,19 +2,12 @@
 using Ecommar.Catalog.Repositories.Interfaces;
 using Ecommar.Catalog.Services;
 using Ecommar.Catalog.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
-using System;
 using System.Reflection;
 
 namespace Ecommar.Catalog.API.Configuration.Extensions;
 public static class BuilderServicesExtension
 {
-    /// <summary>
-    /// AddSwagger
-    /// </summary>
-    /// <param name="builder"></param>
     public static void AddSwagger(this WebApplicationBuilder builder)
     {
         builder.Services.AddSwaggerGen(options =>
@@ -60,11 +53,6 @@ public static class BuilderServicesExtension
         });
     }
 
-
-    /// <summary>
-    /// AddAndConfigureMediator
-    /// </summary>
-    /// <param name="builder"></param>
     public static void AddAndConfigureMediator(this WebApplicationBuilder builder)
     {
         builder.Services.AddMediatR(cfg =>
