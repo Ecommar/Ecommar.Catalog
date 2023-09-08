@@ -367,16 +367,10 @@ FodyWeavers.xsd
 # Object files, transient binaries, etc.
 *.obj
 *.temp
-*.user
 *.aps
 *.pch
 *.vspscc
-*_i.c
-*_p.c
-*_h.h
 *.ncb
-*.tlb
-*.tlh
 *.bak
 *.[Cc]ache
 *.ilk
@@ -388,8 +382,6 @@ FodyWeavers.xsd
 *.idb
 .obj
 *.pch
-*.svclog
-*.scc
 
 # Windows image file caches
 Thumbs.db
@@ -426,10 +418,6 @@ ehthumbs.db
 *.suo
 *.user
 *.userosscache
-*.dbmdl
-*.dbproj.schemaview
-*.pfx
-*.publishsettings
 
 # Windows image file caches
 Thumbs.db
