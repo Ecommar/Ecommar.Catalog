@@ -104,4 +104,9 @@ public class CatalogRepository : ICatalogRepository
 
         return Task.FromResult(product);
     }
+
+    public Task<string> AddProduct(ProductDto product)
+    {
+        return Task.FromResult("return the product id when DB is set");
+    }
 }
