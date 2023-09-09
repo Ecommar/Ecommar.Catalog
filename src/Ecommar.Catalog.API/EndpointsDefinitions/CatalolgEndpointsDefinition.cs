@@ -22,8 +22,14 @@ public class CatalolgEndpointsDefinition
 
 
         app.MapGet("/products", catalogService.GetAllProducts)
+            //.RequireCors(_allowedOrigins);
             .WithDisplayName("Get All Products")
             .Produces<List<ProductDto>>(200);
+        
+        app.MapGet("/products/{productId}", catalogService.GetProductById)
             //.RequireCors(_allowedOrigins);
+            .WithDisplayName("Get Product By Id")
+            .Produces<List<ProductDto>>(200);
+        
     }
 }
