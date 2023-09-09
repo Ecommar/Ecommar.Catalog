@@ -5,4 +5,5 @@ namespace Ecommar.Catalog.Repositories.Interfaces;
 public interface ICatalogRepository
 {
     public Task<List<ProductDto>> GetAllProducts();
+    public Task<ProductDto> GetProductById(string productId);
 }
