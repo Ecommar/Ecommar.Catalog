@@ -1,4 +1,5 @@
-﻿using Ecommar.Catalog.Repositories;
+﻿using Ecommar.Catalog.Infra;
+using Ecommar.Catalog.Repositories;
 using Ecommar.Catalog.Repositories.Interfaces;
 using Ecommar.Catalog.Services;
 using Ecommar.Catalog.Services.Interfaces;
@@ -41,7 +42,9 @@ public static class BuilderServicesExtension
         builder.Services
             //.AddMemoryCache()
             .AddScoped<ICatalogRepository, CatalogRepository>()
-            .AddScoped<ICatalogService, CatalogService>();
+            .AddScoped<ICatalogService, CatalogService>()
+            .AddScoped<DatabaseConfiguration>();
+
     }
 
     public static void AddAndConfigureResponseCaching(this WebApplicationBuilder builder)
@@ -63,4 +66,5 @@ public static class BuilderServicesExtension
             );
         });
     }
+
 }
