@@ -35,6 +35,5 @@ public class CatalolgEndpointsDefinition
             //.RequireCors(_allowedOrigins);
             .WithDisplayName("Add product")
             .Produces<string>(200);
-
     }
 }
