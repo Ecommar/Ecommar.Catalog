@@ -1,9 +1,10 @@
-﻿using Ecommar.Catalog.Infra;
-using Ecommar.Catalog.Repositories;
+﻿using Ecommar.Catalog.Repositories;
 using Ecommar.Catalog.Repositories.Interfaces;
 using Ecommar.Catalog.Services;
 using Ecommar.Catalog.Services.Interfaces;
+using Ecommar.Catalog.Shared.Infra;
 using Microsoft.OpenApi.Models;
+using MongoDB.Driver;
 using System.Reflection;
 
 namespace Ecommar.Catalog.API.Configuration.Extensions;
@@ -64,6 +65,36 @@ public static class BuilderServicesExtension
                 Assembly.GetExecutingAssembly(),
                 Assembly.Load("Ecommar.Catalog.Mediator")
             );
+        });
+    }
+
+    public static void AddMongoServices(this WebApplicationBuilder builder)
+    {
+        var mongoSettings = new MongoSettings();
+        builder.Configuration.GetSection("MongoSettings").Bind(mongoSettings);
+
+        // Add MongoSettings to DI
+        builder.Services.AddSingleton(mongoSettings);
+
+        // Add MongoDB Client and CatalogContext to DI
+        builder.Services.AddSingleton<IMongoClient>(sp =>
+        {
+            return new MongoClient(mongoSettings.ConnectionString);
+        });
+
+        builder.Services.AddSingleton(sp =>
+        {
+            var settings = sp.GetRequiredService<MongoSettings>();
+            var client = sp.GetRequiredService<IMongoClient>();
+            return new CatalogContext(client, settings.DatabaseName!);
+        });
+    }
+
+    public static void AddAutoMapperConfiguration(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddAutoMapper(assembly =>
+        {
+            assembly.AddMaps(typeof(Shared.Mappers.MappingProfile).Assembly);
         });
     }
 

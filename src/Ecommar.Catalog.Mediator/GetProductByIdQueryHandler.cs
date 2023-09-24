@@ -1,20 +1,20 @@
-﻿using Ecommar.Catalog.Models.DTOs;
-using Ecommar.Catalog.Models.Queries;
-using Ecommar.Catalog.Repositories.Interfaces;
+﻿using Ecommar.Catalog.Repositories.Interfaces;
+using Ecommar.Catalog.Shared.DTOs;
+using Ecommar.Catalog.Shared.Queries;
 using MediatR;
 
 namespace Ecommar.Catalog.Mediator;
 
 public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, ProductDto?>
 {
-    private readonly ICatalogRepository repository;
+    private readonly ICatalogRepository _repository;
     public GetProductByIdQueryHandler(ICatalogRepository repository)
     {
-        this.repository = repository;
+        _repository = repository;
     }
 
     public async Task<ProductDto?> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
     {
-        return await repository.GetProductById(request.ProductId);
+        return await _repository.GetProductById(request.ProductId);
     }
 }

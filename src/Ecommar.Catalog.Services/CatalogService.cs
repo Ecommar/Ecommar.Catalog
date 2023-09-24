@@ -1,11 +1,9 @@
-﻿using Ecommar.Catalog.Models.Commands;
-using Ecommar.Catalog.Models.DTOs;
-using Ecommar.Catalog.Models.Queries;
-using Ecommar.Catalog.Services.Interfaces;
+﻿using Ecommar.Catalog.Services.Interfaces;
+using Ecommar.Catalog.Shared.Commands;
+using Ecommar.Catalog.Shared.DTOs;
+using Ecommar.Catalog.Shared.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace Ecommar.Catalog.Services;
 
@@ -13,71 +11,89 @@ public class CatalogService : ICatalogService
 {
     public async Task<IResult> GetAllProducts(IMediator mediator)
     {
-        List<ProductDto>? response;
-
         try
         {
             GetAllProductsQuery query = new();
-            response = await mediator.Send(query);
+            List<ProductDto>? response = await mediator.Send(query);
 
-            if (response == null)
-            {
-                return Results.NotFound();
-            }
+            if (response == null) return Results.NotFound("No product was found");
+
+            return Results.Ok(response);
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
             return Results.Problem();
         }
-
-        return Results.Ok(response);
     }
 
     public async Task<IResult> GetProductById(string productId, IMediator mediator)
     {
-        ProductDto? response;
-
         try
         {
             GetProductByIdQuery query = new(productId);
-            response = await mediator.Send(query);
+            ProductDto? response = await mediator.Send(query);
 
-            if (response == null)
-            {
-                return Results.NotFound();
-            }
+            if (response == null) return Results.NotFound("No product was found");
+
+            return Results.Ok(response);
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
-            return Results.Problem();
+            return Results.Problem("An error occurred while processing your request.");
         }
-
-        return Results.Ok(response);
     }
 
     public async Task<IResult> AddProduct(ProductDto product, IMediator mediator)
     {
-        string response;
-
         try
         {
             AddProductCommand command = new(product);
-            response = await mediator.Send(command);
-
+            string? response = await mediator.Send(command);
             if (string.IsNullOrEmpty(response))
-            {
-                return Results.Problem("Unable to create the product.", statusCode: 500);
-            }
+                return Results.Problem("An error occurred while processing your request.");
+
+            return Results.Ok(response);
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
-            return Results.Problem("An error occurred while processing your request.", statusCode: 500);
+            return Results.Problem("An error occurred while processing your request.");
         }
+    }
 
-        return Results.Ok(response);
+    public async Task<IResult> UpdateProduct(ProductDto product, IMediator mediator)
+    {
+        try
+        {
+            UpdateProductCommand command = new(product);
+            bool response = await mediator.Send(command);
+            if (!response) return Results.NotFound("No product was found"); 
 
+            return Results.Ok();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return Results.Problem("An error occurred while processing your request.");
+        }
+    }
+
+    public async Task<IResult> DeleteProduct(string productId, IMediator mediator)
+    {
+        try
+        {
+            DeleteProductCommand command = new(productId);
+            bool response = await mediator.Send(command);
+            if (!response) return Results.NotFound("No product was found");
+
+            return Results.Ok();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            return Results.Problem("An error occurred while processing your request.");
+        }
     }
 }

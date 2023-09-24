@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ecommar.Catalog.Mediator\Ecommar.Catalog.Mediator.csproj" />
-    <ProjectReference Include="..\Ecommar.Catalog.Models\Ecommar.Catalog.Models.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,70 @@
+{
+  "mock-data": [
+    {
+      "Name": "Laptop Pro",
+      "Description": "A high-end laptop for professionals.",
+      "Price": 1200.50,
+      "InventoryCount": 100,
+      "Category": 0,
+      "ImageUrls": [
+        "https://example.com/images/laptop1.jpg",
+        "https://example.com/images/laptop2.jpg"
+      ],
+      "Reviews": [
+        {
+          "UserId": "U001",
+          "Text": "This laptop is amazing for my daily tasks!",
+          "Rating": 5
+        },
+        {
+          "UserId": "U002",
+          "Text": "Good but a bit overpriced.",
+          "Rating": 3
+        }
+      ],
+      "Specifications": [
+        {
+          "Name": "Processor",
+          "Value": "Intel i7"
+        },
+        {
+          "Name": "RAM",
+          "Value": "16GB"
+        }
+      ]
+    },
+    {
+      "Name": "Smartphone Max",
+      "Description": "A smartphone with a large display and great camera.",
+      "Price": 800.00,
+      "InventoryCount": 150,
+      "Category": 1,
+      "ImageUrls": [
+        "https://example.com/images/smartphone1.jpg",
+        "https://example.com/images/smartphone2.jpg"
+      ],
+      "Reviews": [
+        {
+          "UserId": "U003",
+          "Text": "The camera quality is outstanding!",
+          "Rating": 5
+        },
+        {
+          "UserId": "U004",
+          "Text": "Battery life could be better.",
+          "Rating": 4
+        }
+      ],
+      "Specifications": [
+        {
+          "Name": "Screen Size",
+          "Value": "6.5 inches"
+        },
+        {
+          "Name": "Storage",
+          "Value": "128GB"
+        }
+      ]
+    }
+  ]
+}

@@ -1,146 +1,113 @@
-﻿using Ecommar.Catalog.Models.DTOs;
-using Ecommar.Catalog.Repositories.Interfaces;
-using System;
-using Ecommar.Catalog.Infra;
-using MongoDB.Bson;
+﻿using Ecommar.Catalog.Repositories.Interfaces;
 using MongoDB.Driver;
+using Ardalis.GuardClauses;
+using Ecommar.Catalog.Shared.Models;
+using Ecommar.Catalog.Shared.Infra;
+using Ecommar.Catalog.Shared.DTOs;
+using AutoMapper;
 
 namespace Ecommar.Catalog.Repositories;
 
 public class CatalogRepository : ICatalogRepository
 {
-    private readonly DatabaseConfiguration _databaseConfiguration;
+    private readonly CatalogContext _context;
+    private readonly IMapper _mapper;
 
-
-    public CatalogRepository (DatabaseConfiguration databaseConfiguration)
+    public CatalogRepository (CatalogContext context, IMapper mapper)
     {
-        _databaseConfiguration = databaseConfiguration;
+        _context = context;
+        _mapper = mapper;
     }
-    public Task<List<ProductDto>> GetAllProducts()
+    public async Task<List<ProductDto>> GetAllProducts()
     {
-        // In a real-world scenario, you'd fetch this from a database.
-        List<ProductDto>? products = new()
+        try
         {
-            new ProductDto
-            {
-                Id = Guid.NewGuid().ToString(),
-                Name = "Smartphone",
-                Description = "High-end smartphone with advanced features.",
-                Price = 799.99m,
-                StockCount = 50,
-                Category = "Electronics",
-                Images = new List<string> { "https://example.com/image1.jpg", "https://example.com/image2.jpg" },
-                Reviews = new List<ProductReview>
-                {
-                    new ProductReview
-                    {
-                        ReviewId = Guid.NewGuid().ToString(),
-                        Text = "Excellent smartphone, great camera!",
-                        Rating = 5,
-                        Date = DateTime.Now.AddDays(-15)
-                    },
-                    new ProductReview
-                    {
-                        ReviewId = Guid.NewGuid().ToString(),
-                        Text = "Battery life could be better, but overall a solid device.",
-                        Rating = 4,
-                        Date = DateTime.Now.AddDays(-10)
-                    }
-                },
-                Attributes = new List<ProductAttribute>
-                {
-                    new ProductAttribute
-                    {
-                        AttributeId = Guid.NewGuid().ToString(),
-                        Name = "Color",
-                        Value = "Black"
-                    },
-                    new ProductAttribute
-                    {
-                        AttributeId = Guid.NewGuid().ToString(),
-                        Name = "Storage",
-                        Value = "128GB"
-                    }
-                }
-            }
-        };
-        string? connectionString = _databaseConfiguration.GetMongoDBConnectionString();
-        var client = new MongoClient(connectionString);
-        var database = client.GetDatabase("test");
+            var products = await _context.Products.Find(Builders<Product>.Filter.Empty).ToListAsync();
+            List<ProductDto> productsDto = _mapper.Map<List<ProductDto>>(products);
 
-        // Specify the name of the collection (table)
-        string collectionName = "your-collection-name";
-
-        // Create a new collection (table) in MongoDB if it doesn't exist
-        var collection = database.GetCollection<BsonDocument>(collectionName);
-        collection.Indexes.CreateOne(new CreateIndexModel<BsonDocument>(Builders<BsonDocument>.IndexKeys.Ascending("_id")));
-
-        // Attempt to retrieve the collection's statistics to check if it exists
-        var collectionStats = database.RunCommand<BsonDocument>(new BsonDocument { { "collStats", collectionName } });
-
-        bool isCollectionCreated = collectionStats.Contains("ok");
-
-        if (isCollectionCreated)
-        {
-            var res = true; // Connection successful
+            return productsDto;
         }
-        else
+        catch (Exception ex)
         {
-            var res = false; // Connection failed
+            Console.WriteLine(ex.Message);
+            throw;
         }
-        return Task.FromResult(products);
     }
 
-    public Task<ProductDto> GetProductById(string productId)
+    public async Task<ProductDto> GetProductById(string productId)
     {
-        var product = new ProductDto
+        try
         {
-            Id = productId,
-            Name = "Smartphone",
-            Description = "High-end smartphone with advanced features.",
-            Price = 799.99m,
-            StockCount = 50,
-            Category = "Electronics",
-            Images = new List<string> { "https://example.com/image1.jpg", "https://example.com/image2.jpg" },
-            Reviews = new List<ProductReview>
-                {
-                new ProductReview
-                {
-                    ReviewId = Guid.NewGuid().ToString(),
-                    Text = "Excellent smartphone, great camera!",
-                    Rating = 5,
-                    Date = DateTime.Now.AddDays(-15)
-                },
-                new ProductReview
-                {
-                    ReviewId = Guid.NewGuid().ToString(),
-                    Text = "Battery life could be better, but overall a solid device.",
-                    Rating = 4,
-                    Date = DateTime.Now.AddDays(-10)
-                }
-            },
-            Attributes = new List<ProductAttribute>
-            {
-                new ProductAttribute
-                {
-                    AttributeId = Guid.NewGuid().ToString(),
-                    Name = "Color",
-                    Value = "Black"
-                },
-                new ProductAttribute
-                {
-                    AttributeId = Guid.NewGuid().ToString(),
-                    Name = "Storage",
-                    Value = "128GB"
-                }
-            }
-        };
+            var product = await _context.Products
+                                        .Find(Builders<Product>.Filter.Eq(p => p.ProductId, productId))
+                                        .FirstOrDefaultAsync();
+            ProductDto productDto = _mapper.Map<ProductDto>(product);
 
-        return Task.FromResult(product);
+            return productDto;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw;
+        }
     }
 
-    public Task<string> AddProduct(ProductDto product)
+
+    public async Task<string?> AddProduct(ProductDto productDto)
     {
-        return Task.FromResult("return the product id when DB is set");
+        try
+        {
+            Product product = _mapper.Map<Product>(productDto);
+            await _context.Products.InsertOneAsync(product);
+
+            return product?.ProductId?.ToString();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw;
+        }
     }
+
+    public async Task<bool> UpdateProduct(ProductDto updatedProductDto)
+    {
+        try
+        {
+            Product updatedProduct = _mapper.Map<Product>(updatedProductDto);
+            Guard.Against.Default(updatedProduct.ProductId, nameof(updatedProduct.ProductId));
+
+            var replaceResult = await _context.Products.ReplaceOneAsync(
+                Builders<Product>.Filter.Eq(p => p.ProductId, updatedProduct.ProductId),
+                updatedProduct
+            );
+
+            if (replaceResult.ModifiedCount == 0) return false;
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw;
+        }
+    }
+
+
+    public async Task<bool> DeleteProduct(string productId)
+    {
+        try
+        {
+            var deleteResult = await _context.Products.DeleteOneAsync(Builders<Product>.Filter.Eq(p => p.ProductId, productId));
+
+            if(deleteResult.DeletedCount == 0) return false;
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            throw;
+        }
+    }
+
 }

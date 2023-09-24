@@ -1,6 +1,5 @@
-﻿using Ecommar.Catalog.Models.DTOs;
-using Ecommar.Catalog.Services;
-using Ecommar.Catalog.Services.Interfaces;
+﻿using Ecommar.Catalog.Services.Interfaces;
+using Ecommar.Catalog.Shared.DTOs;
 
 namespace Ecommar.Catalog.API.EndpointsDefinitions;
 
@@ -34,6 +33,16 @@ public class CatalolgEndpointsDefinition
         app.MapPost("/products", catalogService.AddProduct)
             //.RequireCors(_allowedOrigins);
             .WithDisplayName("Add product")
+            .Produces<string>(200);
+
+        app.MapPut("/products", catalogService.UpdateProduct)
+            //.RequireCors(_allowedOrigins);
+            .WithDisplayName("Update product")
+            .Produces<string>(200);
+
+        app.MapDelete("/products/{productId}", catalogService.DeleteProduct)
+            //.RequireCors(_allowedOrigins);
+            .WithDisplayName("Delete product")
             .Produces<string>(200);
     }
 }
