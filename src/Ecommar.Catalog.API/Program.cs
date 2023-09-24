@@ -10,6 +10,8 @@ try
     builder.AddSwagger();
     builder.AddScopedIoc();
     builder.AddAndConfigureMediator();
+    builder.AddMongoServices();
+    builder.AddAutoMapperConfiguration();
 
     var app = builder.Build();
     if (app.Environment.IsDevelopment())

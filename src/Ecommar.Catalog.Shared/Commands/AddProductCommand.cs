@@ -1,9 +1,9 @@
-﻿using Ecommar.Catalog.Models.DTOs;
+﻿using Ecommar.Catalog.Shared.DTOs;
 using MediatR;
 
-namespace Ecommar.Catalog.Models.Commands;
+namespace Ecommar.Catalog.Shared.Commands;
 
-public class AddProductCommand : IRequest<string>
+public class AddProductCommand : IRequest<string?>
 {
     public ProductDto Product { get; set; }
 

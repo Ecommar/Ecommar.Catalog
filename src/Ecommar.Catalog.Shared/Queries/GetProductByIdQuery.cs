@@ -1,7 +1,7 @@
-﻿using Ecommar.Catalog.Models.DTOs;
+﻿using Ecommar.Catalog.Shared.DTOs;
 using MediatR;
 
-namespace Ecommar.Catalog.Models.Queries;
+namespace Ecommar.Catalog.Shared.Queries;
 
 public class GetProductByIdQuery : IRequest<ProductDto?>
 {

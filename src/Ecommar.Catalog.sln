@@ -5,10 +5,6 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommar.Catalog.API", "Ecommar.Catalog.API\Ecommar.Catalog.API.csproj", "{9A8D6DAE-1CDA-4F01-BC05-04F1C6A60936}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommar.Catalog.Models", "Ecommar.Catalog.Models\Ecommar.Catalog.Models.csproj", "{E381D178-F4BE-4B07-BE67-87133BAD295C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommar.Catalog.Infra", "Ecommar.Catalog.Infra\Ecommar.Catalog.Infra.csproj", "{CB0578EF-FD43-41D1-9DDE-316752E4038A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommar.Catalog.Mediator", "Ecommar.Catalog.Mediator\Ecommar.Catalog.Mediator.csproj", "{9F3D72AE-365A-4CDA-A5A8-83C6FED7F56D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommar.Catalog.Repositories", "Ecommar.Catalog.Repositories\Ecommar.Catalog.Repositories.csproj", "{33FD36B5-1008-42DE-B53F-03FD721753E6}"
@@ -19,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommar.Catalog.Tests.Integ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommar.Catalog.Utils", "Ecommar.Catalog.Utils\Ecommar.Catalog.Utils.csproj", "{1DCCAAF5-ACCD-4708-810E-C52690E53B99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommar.Catalog.Services", "Ecommar.Catalog.Services\Ecommar.Catalog.Services.csproj", "{074CB40C-A363-4631-B41C-0036F3D6A9B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ecommar.Catalog.Services", "Ecommar.Catalog.Services\Ecommar.Catalog.Services.csproj", "{074CB40C-A363-4631-B41C-0036F3D6A9B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommar.Catalog.Shared", "Ecommar.Catalog.Shared\Ecommar.Catalog.Shared.csproj", "{22CF6491-1DA6-4CC6-B18E-97461CA57548}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +29,6 @@ Global
 		{9A8D6DAE-1CDA-4F01-BC05-04F1C6A60936}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A8D6DAE-1CDA-4F01-BC05-04F1C6A60936}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A8D6DAE-1CDA-4F01-BC05-04F1C6A60936}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E381D178-F4BE-4B07-BE67-87133BAD295C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E381D178-F4BE-4B07-BE67-87133BAD295C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E381D178-F4BE-4B07-BE67-87133BAD295C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E381D178-F4BE-4B07-BE67-87133BAD295C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CB0578EF-FD43-41D1-9DDE-316752E4038A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CB0578EF-FD43-41D1-9DDE-316752E4038A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CB0578EF-FD43-41D1-9DDE-316752E4038A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CB0578EF-FD43-41D1-9DDE-316752E4038A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9F3D72AE-365A-4CDA-A5A8-83C6FED7F56D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9F3D72AE-365A-4CDA-A5A8-83C6FED7F56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F3D72AE-365A-4CDA-A5A8-83C6FED7F56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,6 +53,10 @@ Global
 		{074CB40C-A363-4631-B41C-0036F3D6A9B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{074CB40C-A363-4631-B41C-0036F3D6A9B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{074CB40C-A363-4631-B41C-0036F3D6A9B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22CF6491-1DA6-4CC6-B18E-97461CA57548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22CF6491-1DA6-4CC6-B18E-97461CA57548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22CF6491-1DA6-4CC6-B18E-97461CA57548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22CF6491-1DA6-4CC6-B18E-97461CA57548}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
